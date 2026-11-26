@@ -20,7 +20,7 @@ from starlette.responses import HTMLResponse, RedirectResponse
 
 from pc_actions import capture_screen, list_processes
 from pc_actions import run_powershell as execute_powershell
-from server import READ_ONLY
+from server import PROJECT_NAME, READ_ONLY
 from workspace_tools import Workspace, WorkspaceError
 
 
@@ -213,7 +213,7 @@ class OperatorQueue:
         jobs = "".join(entries) or "<p>No requests to review.</p>"
         return f"""<!doctype html>
         <html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-        <title>Gemini PC Bridge · Local approval</title>
+        <title>{PROJECT_NAME} · Local approval</title>
         <style>
           * {{box-sizing:border-box}}
           body {{background:#f3f5f7;color:#182736;font:16px/1.55 system-ui,sans-serif;margin:0}}
@@ -232,7 +232,7 @@ class OperatorQueue:
           :focus-visible {{outline:3px solid #a33f00;outline-offset:3px}}
         </style>
         <main><h1>Local approvals</h1>
-        <p>Gemini PC Bridge · <a href="/review">Refresh</a></p>{jobs}</main></html>"""
+        <p>{PROJECT_NAME} · <a href="/review">Refresh</a></p>{jobs}</main></html>"""
 
 
 def register_workspace(server, root: Path, port: int):

@@ -1,4 +1,4 @@
-"""Locally approved Windows actions for the Gemini PC bridge.
+"""Locally approved Windows actions for GeminiRDC.
 
 The MCP layer calls these helpers only after the user approved the exact local
 operation. Importing this module changes no machine or process settings; the

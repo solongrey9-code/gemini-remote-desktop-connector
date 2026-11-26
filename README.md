@@ -1,8 +1,8 @@
-# Gemini PC Bridge
+# GeminiRDC
 
 [简体中文](README.zh-CN.md) · [Security model](SECURITY.md)
 
-Gemini PC Bridge is a self-hosted MCP server that connects Gemini Apps to a Windows PC. It can read hardware information, list processes, and work with a dedicated folder. File changes, PowerShell commands, and screenshots run only after the PC owner approves the specific request on Windows.
+GeminiRDC is a self-hosted MCP server that connects Gemini Apps to a Windows PC. It can read hardware information, list processes, and work with a dedicated folder. File changes, PowerShell commands, and screenshots run only after the PC owner approves the specific request on Windows.
 
 **Preview status.** I verified a live hardware query in Gemini chat, plus file reads and a PowerShell request in Gemini Apps Developer Mode. The MCP smoke test also verifies file writes, command output, and denial of a screenshot request. In the expanded workspace tests, standard Gemini chat discovered the tools but did not dispatch the file read. Start in Developer Mode. Live screenshot rendering in Gemini has yet to be verified.
 
@@ -27,8 +27,8 @@ Use Windows with Python 3.10 or newer and Windows PowerShell. Start the bridge a
 ### 1. Install and verify locally
 
 ```powershell
-git clone https://github.com/solongrey9-code/gemini-pc-bridge.git
-Set-Location gemini-pc-bridge
+git clone https://github.com/solongrey9-code/geminirdc.git
+Set-Location geminirdc
 python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
 .\.venv\Scripts\python.exe verify.py
@@ -73,8 +73,8 @@ Keep port `18773` on this PC. It serves the [local approval page](http://127.0.0
 1. In a second PowerShell window, run `.\pair-workspace.ps1 -Open`. New pairing requests are accepted for 15 minutes.
 2. Open [Gemini Apps Developer Mode](https://gemini.google.com/devmode), choose **Create new**, and enter `https://bridge.example.com/gemini-pc/mcp` using your own origin.
 3. Continue through Google's consent screen. On the bridge's pairing page, copy the request ID. Run `.\pair-workspace.ps1 -Approve '<request-id>'` on the PC, then select **Finish linking** in the browser.
-4. Save **Gemini PC Bridge** after Gemini shows the available tools. Run `.\pair-workspace.ps1 -Close` to close enrollment and keep the existing link.
-5. With Gemini PC Bridge selected, ask it to run `get_windows_hardware`. To try a file read, create `workspace\hello.txt` and ask Gemini to read it with `read_file`.
+4. Save **GeminiRDC** after Gemini shows the available tools. Run `.\pair-workspace.ps1 -Close` to close enrollment and keep the existing link.
+5. With GeminiRDC selected, ask it to run `get_windows_hardware`. To try a file read, create `workspace\hello.txt` and ask Gemini to read it with `read_file`.
 
 For a write, command, or screenshot, Gemini returns an action ID. Review the exact operation in the local approval page. After it runs, view the output there or ask Gemini to retrieve it with `get_action_result`. [Google's Developer Mode guide](https://developers.google.com/connected-apps/mcp/dev-mode/usage)
 

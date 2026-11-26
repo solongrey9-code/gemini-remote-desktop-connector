@@ -20,7 +20,7 @@ from mcp.shared.auth import OAuthClientInformationFull, OAuthToken
 from starlette.responses import HTMLResponse, RedirectResponse, Response
 import uvicorn
 
-from server import create_server
+from server import PROJECT_NAME, create_server
 from oauth_state import OAuthState
 
 
@@ -174,7 +174,6 @@ def connected_app(
     issuer = origin + prefix
     provider = Provider(issuer, state_file)
     server = create_server(
-        name="Gemini PC Bridge",
         instructions=(
             "Accesses the linked Windows PC for hardware, workspace files and process diagnostics. "
             "File changes, shell commands and screen captures wait for an exact local approval."
@@ -230,8 +229,8 @@ def connected_app(
             )
 
         return HTMLResponse(
-            '<!doctype html><html lang="en"><meta charset="utf-8"><title>Gemini PC Bridge</title>'
-            '<main><h1>Connect Gemini PC Bridge</h1>'
+            f'<!doctype html><html lang="en"><meta charset="utf-8"><title>{PROJECT_NAME}</title>'
+            f'<main><h1>Connect {PROJECT_NAME}</h1>'
             f'<p>{escape(permissions)}</p>'
             f'<p>Approve this pairing on your Windows PC. Request ID <code>{escape(pairing_id)}</code>.</p>'
             f'<form method="post" action="{prefix}/pair?id={escape(pairing_id)}">'

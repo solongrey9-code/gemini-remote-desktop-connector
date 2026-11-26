@@ -11,6 +11,7 @@ from mcp.types import ToolAnnotations
 from pydantic import BaseModel
 
 
+PROJECT_NAME = "GeminiRDC"
 READ_ONLY = ToolAnnotations(
     read_only_hint=True,
     destructive_hint=False,
@@ -82,7 +83,7 @@ def get_windows_hardware() -> WindowsHardware:
 
 
 def create_server(
-    name: str = "Gemini PC Bridge",
+    name: str = PROJECT_NAME,
     instructions: str = "Reports live diagnostics for the linked Windows PC.",
     **options,
 ) -> MCPServer:

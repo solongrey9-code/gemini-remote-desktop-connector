@@ -1,4 +1,4 @@
-"""Confined, synchronous filesystem operations for the Windows PC bridge.
+"""Confined, synchronous filesystem operations for GeminiRDC.
 
 A remote model drives these methods, so every argument is treated as untrusted:
 
