@@ -1,6 +1,6 @@
 # Security model
 
-GeminiRDC runs as the Windows user who starts it. The HTTPS proxy communicates with the loopback MCP port. OAuth access is scoped to the bridge's resource URL. OAuth state is encrypted with Windows DPAPI for the current user.
+Gemini Remote Desktop Connector runs as the Windows user who starts it. The HTTPS proxy communicates with the loopback MCP port. OAuth access is scoped to the bridge's resource URL. OAuth state is encrypted with Windows DPAPI for the current user.
 
 New enrollment starts closed. The PC owner opens a 15-minute window and approves the request ID shown during Google OAuth linking. Closing enrollment leaves existing valid links usable. A valid OAuth client can read the dedicated workspace, basic hardware details, and process names and IDs.
 

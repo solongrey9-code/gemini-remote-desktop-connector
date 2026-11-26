@@ -1,4 +1,4 @@
-"""Confined, synchronous filesystem operations for GeminiRDC.
+"""Confined, synchronous filesystem operations for Gemini Remote Desktop Connector.
 
 A remote model drives these methods, so every argument is treated as untrusted:
 

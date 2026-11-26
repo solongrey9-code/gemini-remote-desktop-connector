@@ -11,7 +11,7 @@ from mcp.types import ToolAnnotations
 from pydantic import BaseModel
 
 
-PROJECT_NAME = "GeminiRDC"
+PROJECT_NAME = "Gemini Remote Desktop Connector"
 READ_ONLY = ToolAnnotations(
     read_only_hint=True,
     destructive_hint=False,

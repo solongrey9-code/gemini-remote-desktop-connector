@@ -27,7 +27,7 @@ class OAuthState:
         for name, records in (("clients", clients), ("access", access), ("refresh", refresh)):
             data[name] = {key: value.model_dump(mode="json") for key, value in records.items()}
         encrypted = win32crypt.CryptProtectData(
-            json.dumps(data).encode("utf-8"), "GeminiRDC OAuth state", None, None, None, 1,
+            json.dumps(data).encode("utf-8"), "Gemini Remote Desktop Connector OAuth state", None, None, None, 1,
         )
         self.path.parent.mkdir(parents=True, exist_ok=True)
         with NamedTemporaryFile(dir=self.path.parent, delete=False) as stream:

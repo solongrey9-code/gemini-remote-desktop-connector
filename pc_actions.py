@@ -1,4 +1,4 @@
-"""Locally approved Windows actions for GeminiRDC.
+"""Locally approved Windows actions for Gemini Remote Desktop Connector.
 
 The MCP layer calls these helpers only after the user approved the exact local
 operation. Importing this module changes no machine or process settings; the
