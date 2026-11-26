@@ -1,0 +1,10 @@
+.venv/
+.bridge/
+__pycache__/
+.pytest_cache/
+/workspace/
+*.py[cod]
+*.dpapi
+*.log
+.env
+.env.*
